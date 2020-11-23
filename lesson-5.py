@@ -6,7 +6,6 @@ from sys import argv
 
 p = argv
 
-
 def zp(*args):
     try:
         print(f'Выработка работника в часах - {float(p[1])} руб.\n'
@@ -133,6 +132,7 @@ while True:
         break
     except ValueError:
         print('Следует ввести положительное число!')  # обработка ошибки ввода значения
+
 
 for el in fact(n):
     print(el)

@@ -133,7 +133,8 @@ lessons = {el.split(":")[0]: el.split(":")[1] for el in string}  # делим с
 
 for k, v in lessons.items():
     v = re.findall('(\d+)', v)  # ищем числа в каждом значении словаря и делаем из них список
-    lessons[k] = v
+    v = map(int, v)
+    lessons[k] = sum(v)
 
 print(lessons)
 

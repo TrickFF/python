@@ -44,7 +44,6 @@ t.running()
 # Вариант 2
 from tkinter import Tk, Canvas, Frame, Button
 
-
 class TrafficLight(Tk):
     __color = ['red', 'yellow', 'green', 'lightgrey', 'black']
 
@@ -62,9 +61,9 @@ class TrafficLight(Tk):
         stop_btn = Button(self, text="STOP", height=1, width=6, command=self.stop)
         stop_btn.pack()
 
-        self.red = self.canvas.create_rectangle(45, 25, 95, 75, fill=TrafficLight.__color[3])
-        self.yellow = self.canvas.create_rectangle(45, 75, 95, 125, fill=TrafficLight.__color[3])
-        self.green = self.canvas.create_rectangle(45, 125, 95, 175, fill=TrafficLight.__color[3])
+        self.red = self.canvas.create_oval(45, 25, 95, 75, fill=TrafficLight.__color[3])
+        self.yellow = self.canvas.create_oval(45, 75, 95, 125, fill=TrafficLight.__color[3])
+        self.green = self.canvas.create_oval(45, 125, 95, 175, fill=TrafficLight.__color[3])
 
     def change_red(self):
         self.canvas.itemconfigure(self.red, fill=TrafficLight.__color[0])
@@ -97,10 +96,8 @@ class TrafficLight(Tk):
         exit()
 
 
-if __name__ == "__main__":
-    root = TrafficLight()
-    root.mainloop()
-
+root = TrafficLight()
+root.mainloop()
 
 ####################################################################################################
 
@@ -177,7 +174,7 @@ class Position(Worker):
         return f'{self.name} {self.surname}'
 
     def get_total_income(self):
-        return self._income['wage'] + self._income['bonus']
+        return round(self._income['wage'] + self._income['bonus'], 2)
 
 
 name = input('Введите имя сотрудника - ').title()
@@ -265,13 +262,16 @@ class PoliceCar(Car):
     def __init__(self, speed, color, name, is_police=True):
         super().__init__(speed, color, name, is_police)
 
+    #сирена включается, если у какй-то из автомобилей превышает скорость
     def siren(self, wcspeed, tcspeed):
         if wcspeed > 40:
-            print(f'Превышение скорости грузовым автомобилем. Вкючена сирена!')
+            print(f'Превышение скорости грузовым автомобилем.'
+                  f' Вкючена сирена, начато преследование!')
         if tcspeed > 60:
-            print(f'Превышение скорости а/м городского транспорта. Вкючена сирена!')
+            print(f'Превышение скорости а/м городского транспорта.'
+                  f' Вкючена сирена, начато преследование!')
 
-
+# случайным образом выбираем одно из возможных направлений движения
 def dir():
     ls = ['повернула налево', 'повернула направо', 'развернулась']
     direction = rnd.choice(ls)

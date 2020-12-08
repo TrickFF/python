@@ -1,18 +1,6 @@
-class MyClass:
-    def __init__(self, p_1, p_2):
-        self.p_1 = p_1
-        self.p_2 = p_2
+n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-    # def __del__(self):
-    #     print(f'Объект удален {self}!')
+def create_phone_number(n):
+    return '(' + str(n[0]) + str(n[1]) + str(n[2]) + ')' + ' ' + str(n[3]) + str(n[4]) + str(n[5])+ '-' + str(n[6]) + str(n[7]) + str(n[8]) + str(n[9])
 
-    def __add__(self, other): # 90 (self) + 91(other)
-        return MyClass(self.p_1 + other.p_1, self.p_2 + other.p_2)
-
-    def __str__(self):
-         return f'p_1: {self.p_1}, p_2: {self.p_2}'
-
-
-obj_1 = MyClass(90, 99)
-obj_2 = MyClass(91, 100)
-print(obj_1 + obj_2 + obj_2)
+print(create_phone_number(n))
